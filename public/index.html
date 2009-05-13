@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+			/* layout and correction */
+			* {
+				vertical-align: baseline;
+				font-family: inherit;
+				font-weight: inherit;
+				font-style: inherit;
+				font-size: 100%;
+				border: 0 none;
+				outline: 0;
+				padding: 0;
+				margin: 0;
+			}
+			html, body { height: 100%; }
+			#wrapper {
+				min-height: 100%;
+				height: auto !important;
+				height: 100%;
+				margin: 0 auto -150px;
+			}
+			#footer, #reserved { height: 150px; }
+			/* styles */
+			a:visited {	color: #e3eefb; }
+			a:hover {	text-decoration: underline; }
+			body {
+				color: #afb5bc;
+				min-width: 600px;
+			}
+			a {
+				text-decoration: none;
+				color: #e3eefb; 
+			}
+			ul {	list-style: none; }
+			#wrapper {
+				font-size: 110%;
+				width: 650px;
+				min-width: 650px;
+				color: #777;
+			}
+			#footer ul {
+				border-top: 4px solid #e3eefb;
+				border-bottom: 1px solid #e3eefb;
+				padding: 0 30px;
+				padding-top: 123px;
+				background-color: #4a72a3;
+				color: #e3eefb;
+				font-size: 70%;
+			}
+			#footer li {
+				font-family: Helvetica, verdana, sans-serif;
+				display: inline;
+				line-height: 22px;
+				padding: 0 5px;
+				height: 22px;
+			}
+			#panel * {
+				font-family: Georgia, New York, Times, serif;
+			}
+			#panel {
+				float: left;
+				width: 400px;
+				padding-top: 40px;
+				padding-bottom: 40px;
+			}
+			form {
+				background-color: #e3eefb;
+				padding: 15px 40px 20px 40px;
+				position: relative;
+			}
+			label {
+				height: 30px;
+				line-height: 30px;
+			}
+			select {
+				height: 24px;
+			}
+			input {
+				border: 2px solid #e3eefb;
+				border-bottom: 2px solid #afb5bc;
+			}
+			input.submit {
+				border: 2px outset #e3eefb;
+				background-color: #4a72a3;
+				color: #e3eefb;
+				padding: 5px 10px;
+			}
+			form p {
+				padding:5px 0;
+			}
+			#poster {
+				width: 250px;
+				float: right;
+				text-align: center;
+				padding-top: 40px;
+				padding-bottom: 40px;
+				position: relative;
+			}
+			#poster img {
+				padding: 20px 40px;
+			}
+			#poster a {
+				color: #4a72a3;
+			}
+			span.clear {
+				display: block;
+				clear: both;
+			}
+			span.click {
+				position: relative;
+				top: -20px;
+				left: 5px;
+				font-size: 70%;
+				font-family: Helvetica, verdana, sans-serif;
+				display: none;
+			}
+			#loading {
+				background: white url(images/loading.gif) no-repeat scroll center center;
+				position: absolute;
+				width: 180px;
+				height: 30px;
+				top: 190px;
+				left: 40px;
+				display: none;
+			}
+			span.hint {
+				font-family: Helvetica, verdana, sans-serif;
+				font-size: 55%;
+				color: #4a72a3; 
+			}
+		</style>
+		<script type="text/javascript" src="lib/jquery.js"></script>
+		<script type="text/javascript" src="lib/jquery.highlight.js"></script>
+		<script type="text/javascript">
+			<!-- //
+			$(function() {
+					$('#loading').css({'opacity' : '0.7'});
+
+					$('form').submit(function() {
+						$('input.submit').attr('disabled', true);
+						$('span.click').hide();
+						$('#loading').show();
+						});
+
+			});
+
+			function submit_ok(path) {
+				$.get(path, function() {
+
+				after_submit();
+				$('#poster img').attr('src', path);
+				$('span.click').find('a').attr('href', path).end().show();
+
+				$('#poster img').effect('highlight', {color: '#4a72a3'}, 1000);
+
+				});			
+			};
+
+			function after_submit() {
+				$('#loading').hide();
+				$('input.submit').removeAttr('disabled');
+			};
+
+			function error_occured(message) {
+				after_submit();
+				alert(message + "\n" + "Please try again later.");
+			};
+			// -->
+		</script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="panel">
+				<form action="make.php" method="post" enctype="multipart/form-data" target="upload_agent">
+					<fieldset>
+						<p>
+						<label for="poster_title">Title: </label>
+						<br />
+						<select name="poster[title]" id="poster_title">
+							<option value="WANTED">WANTED</option>
+							<option value="FIND">FIND</option>
+						</select>
+						</p>
+						<p>
+						<label for="poster_name">Name: </label><span class="hint">(max 32 chars.)</span>
+						<br />
+						<input type="text" name="poster[name]" id="poster_name" maxlength="32" size="16" />
+						</p>
+						<p>
+						<label for="poster_reason">Reason: </label><span class="hint">(max 64 chars.)</span> 
+						<br />
+						<input type="text" name="poster[reason]" id="poster_reason" maxlength="64" size="16" />
+						</p>
+						<p>
+						<label for="poster_action">Cost: </label><span class="hint">(max 16 chars.)</span>
+						<br />
+						<select name="poster[action]" id="poster_action">
+							<option value="REWARD">REWARD</option>
+							<option value="SPEND">SPEND</option>
+						</select>
+						<input type="text" name="poster[money]" id="poster_money" maxlength="16" size="8" />
+						</p>
+						<p>
+						<label for="poster_image">Picture: </label><span class="hint">(max 512KB, jpg, png allowed.)</span>
+							<br />
+							<input type="file" style="border: 0;" name="picture" id="poster_image" />
+						</p>
+						<br />
+						<input type="submit" value="Publish!" class="submit" />
+					</fieldset>
+				</form>
+			</div>
+
+			<div id="poster">
+				<div id="loading"></div>
+				<img src="images/sample.png" alt="The Poster." title="Right-click to save me." />
+				<span class="click">Right click to save it or<br /><a href="#">Click</a> to download.</span>
+			</div>
+
+			<span class="clear"></span>
+
+			<div id="reserved"></div>
+			</div>
+
+			<div id="footer">
+				<ul>
+					<li>
+					2009<img src="images/copyleft.png" alt="copyleft" height="12px" /> Adikos 
+					<a rel="license" href="http://creativecommons.org/licenses/by/2.5/tw/">Some rights reserved</a>.
+					</li>
+
+					<li>Terms of Use</li>
+					<li>Privacy Policy</li>
+					<li><a href="http://validator.w3.org/check?uri=http%3A%2F%2Flab.adios.tw%2Fwanted%2F">Validate</a></li>
+				</ul>
+			</div>
+			<iframe id="upload_agent" name="upload_agent" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
+	</body>
+</html>
+
+

@@ -1,0 +1,6 @@
+Packages needed:
+php5
+php5-imagick
+
+Notice:
+fonts is not included in the repository.
